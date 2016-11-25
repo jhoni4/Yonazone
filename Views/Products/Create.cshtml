@@ -1,0 +1,75 @@
+@model Yonazone.ViewModels.SellProductViewModel
+
+@{
+    ViewData["Title"] = "Create New Product";
+}
+
+<br>
+<h2>@ViewData["Title"]</h2>
+
+<form asp-action="Create">
+    <div class="form-horizontal">
+        <hr />
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        <div class="form-group">
+            <label asp-for="@Model.Product.Name" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="@Model.Product.Name" class="form-control" />
+                <span asp-validation-for="@Model.Product.Name" class="text-danger" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="@Model.Product.Description" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="@Model.Product.Description" class="form-control" />
+                <span asp-validation-for="@Model.Product.Description" class="text-danger" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="@Model.Product.Price" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="@Model.Product.Price" class="form-control" type="number" step="0.01"/>
+                <span asp-validation-for="@Model.Product.Price" class="text-danger" />
+                
+            </div>
+        </div>
+
+
+
+        <!--type dropdown-->
+        <div class="form-group">
+            <label asp-for="@Model.Product.ProductTypeId" class="col-md-2 control-label">Product Type</label>
+                <div class="col-md-10">
+                    @Html.DropDownList(
+                        "Product.ProductTypeId", 
+                        @Model.ProductTypeId, 
+                        new {
+                            @name="Product.ProductTypeId",
+                            @class="ProductTypeId form-control"
+                        }
+                    )
+                    <span asp-validation-for="@Model.Product.ProductTypeId" />
+                </div>
+        </div>
+
+        <div class="form-group">
+            <label asp-for="@Model.Product.ProductSubTypeId" class="subDropdownLabel col-md-2 control-label">Product Subtype</label>
+                <div class="col-md-10">
+                    @Html.DropDownList("Product.ProductSubTypeId", new List<SelectListItem>(), new {@class="ProductSubTypeId form-control"} )
+                    <span asp-validation-for="@Model.Product.ProductSubTypeId" />  
+                </div>
+        </div>
+            
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Create" class="btn btn-pill btn-primary"/>
+            </div>
+        </div>
+
+    </div>
+</form>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+

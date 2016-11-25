@@ -1,0 +1,16 @@
+
+@model Yonazone.ViewModels.ConfirmationViewModel
+
+@{
+    ViewData["Title"] = "Confirmation Page";
+    ViewData["Message1"] = "Thank You For Your Order!";
+    ViewData["Message2"] = "We are currently processing your order.  You should recieve it within 28-56 days.!";
+}
+
+<br>
+<h2>@ViewData["Title"]</h2>
+ <div class="col-md-12">    
+    <h2>@ViewData["Message1"]</h2>
+    <p>@ViewData["Message2"]</p>
+    <h3>Order number: @Model.OrderId</h3>
+</div>    

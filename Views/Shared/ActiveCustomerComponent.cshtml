@@ -1,0 +1,21 @@
+<ul class="nav navbar-nav navbar-right">
+    <li>
+        <div>
+             @Html.DropDownList("UserId") 
+        </div>
+        @if (@Model.ChosenUser.FirstName == "Create")
+        {
+            <a asp-area="" asp-controller="Users" asp-action="Create">
+            @Model.ChosenUser.FirstName @Model.ChosenUser.LastName
+            </a>
+        }
+        @if (@Model.ChosenUser.FirstName != "Create")
+            {
+                <a asp-area="" asp-controller="Orders" asp-action="Index">
+                @Model.ChosenUser.FirstName @Model.ChosenUser.LastName
+                </a>
+            }
+        <!--"CustomerId" pulls from any model becuase they all derive from the baseviewmodel-->
+    </li>
+    <li><a asp-area="" asp-controller="Orders" asp-action="Index"><span class="glyphicon glyphicon-shopping-cart"></span> (@Model.count())</a></li>
+</ul>

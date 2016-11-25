@@ -1,0 +1,68 @@
+@model Yonazone.ViewModels.UserOrderViewModel
+
+
+@if(Model.count() != 0)
+ {
+     
+        ViewData["Title"] = "Order";
+
+    <h2>@ViewData["Title"]</h2>
+
+
+    <hr/>
+  
+    foreach (var item in Model.Product)
+    {
+        <div class="row">
+            <div class="col-md-3"><a asp-action="Detail" asp-controller="Products" asp-route-id="@item.ProductId">@Html.DisplayFor(modelItem => item.Name)</a></div>
+            <div class="col-md-5">@Html.DisplayFor(modelItem => item.Description)</div>
+            <div class="col-md-3 col-md-offset-1">@Html.DisplayFor(modelItem => item.Price)</div>
+        </div>
+    }
+    
+    <div class="row">
+        <div class="col-md-6">
+            <h2>Total Price: @Model.TotalOrderPrice</h2>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="col-md-10">
+            @Html.LabelFor(model => model.PaymentTypes)
+            @Html.DropDownList(
+                "PaymentTypes", 
+                @Model.PaymentTypes, 
+                new {
+                    @name="PaymentTypes",
+                    @class="paymentTypes"
+                }
+            )
+            <span asp-validation-for="@Model.PaymentTypes" />
+        </div>
+    </div>
+    <hr/>
+    <div class="row">
+        <div class="col-md-offset-6 col-md-3">
+            <a type="submit"  class="btn btn-pill btn-primary" asp-area="" asp-controller="Payment" asp-action="AddPayment">Add New Payment</a>
+        </div>
+        <div class="col-md-3">
+            <input type="button" value="Complete Order" class="btn btn-pill btn-success completeOrder" asp-area="">
+        </div>
+    </div>    
+ }
+ else
+ {
+
+    ViewData["message"] = "Your cart is empty";
+    
+  <hr>
+  <div class="container">
+
+    <div class="col-md-offset-3 col-md-3">
+        <h2>@ViewData["message"]</h2><br>
+        <a type="submit"  class="btn btn-info" asp-area="" asp-controller="Products" asp-action="Index">Go Shopping</a>
+    </div>
+  
+  </div>  
+ }
+    

@@ -1,0 +1,22 @@
+@model Yonazone.ViewModels.ProductTypeDetailViewModel
+
+
+@{
+    ViewData["Title"] = "Categories";
+    ViewData["Message"] = "Please select a category to browse available items for sale";
+}
+
+<br/>
+<h2>@ViewData["Title"]</h2>
+<br/>
+<h4>@ViewData["Message"]</h4>
+<br/>
+
+
+@foreach (var item in Model.ProductTypes)
+    {
+        <div class="row">
+            <div class="col-md-3"><a asp-action="ProductTypeDetail" asp-route-id="@item.ProductTypeId"><h4>@Html.DisplayFor(modelItem => item.Name) <span>(@Html.DisplayFor(modelItem => item.Quantity))</span></h4></a></div>
+            <br/>
+        </div>
+    }

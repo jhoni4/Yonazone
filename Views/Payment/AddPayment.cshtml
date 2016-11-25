@@ -1,0 +1,54 @@
+@model Yonazone.ViewModels.PaymentTypeFormViewModel
+
+@{
+    ViewData["Title"] = "New Payment Type";
+}
+
+<h2>@ViewData["Title"]</h2>
+
+<form asp-action="AddPayment">
+    <div class="form-horizontal">
+        <h4>Product</h4>
+        <hr />
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+        <div class="form-group">
+            <label asp-for="PaymentType.Name" class="col-md-2 control-label">Payment Nickname</label>
+            <div class="col-md-10">
+                <input asp-for="PaymentType.Name" class="form-control" placeholder="ex: Steve's Visa"/>
+                <span asp-validation-for="PaymentType.Name" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="PaymentType.AccountNumber" class="col-md-2 control-label">Account Number</label>
+            <div class="col-md-10">
+                <input asp-for="PaymentType.AccountNumber" class="form-control" placeholder="ex: 12345678" />
+                <span asp-validation-for="PaymentType.AccountNumber" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="PaymentType.CVV" class="col-md-2 control-label">CVV</label>
+            <div class="col-md-10">
+                <input asp-for="PaymentType.CVV" class="form-control" placeholder="ex: 789"/>
+                <span asp-validation-for="PaymentType.CVV" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="PaymentType.Expiration" class="col-md-2 control-label">Expiration</label>
+            <div class="col-md-10">
+                <input asp-for="PaymentType.Expiration" class="form-control" placeholder="mm/dd/yyyy"/>
+                <span asp-validation-for="PaymentType.Expiration" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Save Payment Type" asp-controller="Order" asp-action="Index" class="btn btn-default"/>
+            </div>
+        </div>
+    </div>
+</form>
+
+<div>
+    <a asp-controller="Orders" asp-action="Index">Back to Order</a>
+</div>
+

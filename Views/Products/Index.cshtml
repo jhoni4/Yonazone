@@ -1,0 +1,21 @@
+@model Yonazone.ViewModels.ProductTypeViewModel
+
+@{
+    ViewData["Title"] = "All Products";
+}
+<br>
+<h2>@ViewData["Title"]</h2>
+
+<hr/>
+<div>
+    <table class="table table-striped">
+        @foreach (var item in Model.Products)
+        {
+            <tr>
+                <td class="col-md-3"><a asp-action="Detail" asp-route-id="@item.ProductId">@Html.DisplayFor(modelItem => item.Name)</a></td>
+                <td class="col-md-3">@Html.DisplayFor(modelItem => item.Description)</td>
+                <td class="col-md-3">@Html.DisplayFor(modelItem => item.Price)</td>
+            </tr>
+        }
+    </table>  
+ </div>   

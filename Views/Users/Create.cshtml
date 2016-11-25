@@ -1,0 +1,29 @@
+@model Yonazone.ViewModels.CreateUserViewModel
+
+<br>
+<h2>Create a New Account</h2>
+<form asp-action="Create">
+  <div class="form-horizontal">
+    <div class="form-group">
+        <label asp-for="@Model.User.FirstName" class="col-md-2 control-label">First Name: </label>
+        <div class="col-md-10">
+            <input asp-for="@Model.User.FirstName" class="form-control" />
+            <span asp-validation-for="@Model.User.FirstName" class="text-danger" />
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="@Model.User.LastName" class="col-md-2 control-label">Last Name: </label>
+        <div class="col-md-10">
+            <input asp-for="@Model.User.LastName" class="form-control" />
+            <span asp-validation-for="@Model.User.LastName" class="text-danger" />
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" value="Create" class="btn btn-pill btn-primary" />
+        </div>
+    </div>
+  </div>
+</form>
